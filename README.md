@@ -1,305 +1,208 @@
-# README Proposal for [Legal Navi Repository]
 
-````markdown
-<div align="center">
 
+```markdown
 # ⚖️ Legal Navi
 ### AI-Powered Indian Legal Assistant using RAG & LLMs
 
-<img src="assets/legalnavi-banner.png" alt="Legal Navi Banner" width="100%" />
-
-<p align="center">
-  <b>Making Indian legal knowledge accessible, understandable, and actionable for everyone.</b>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10+-blue.svg" />
-  <img src="https://img.shields.io/badge/LLM-Groq%20%7C%20OpenAI-green.svg" />
-  <img src="https://img.shields.io/badge/Framework-Streamlit-red.svg" />
-  <img src="https://img.shields.io/badge/RAG-Enabled-orange.svg" />
-  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" />
-</p>
-
-</div>
-
 ---
 
-# 📌 Overview
+## 📌 Overview
 
 **Legal Navi** is an AI-powered legal intelligence platform designed to simplify Indian legal understanding through **Large Language Models (LLMs)** and **Retrieval-Augmented Generation (RAG)**.
 
 The system analyzes user queries or legal incidents and provides:
-
-- ⚖️ Relevant legal sections
-- 📚 Context-aware legal explanations
-- 🧠 AI-generated legal insights
-- 🔍 Retrieval-based accurate responses
-- 🛡️ Reduced hallucination using RAG pipelines
+- ⚖️ **Relevant legal sections**
+- 📚 **Context-aware legal explanations**
+- 🧠 **AI-generated legal insights**
+- 🔍 **Retrieval-based accurate responses**
+- 🛡️ **Reduced hallucination** using RAG pipelines
 
 The project aims to bridge the gap between complex legal systems and ordinary citizens by making legal assistance more accessible, faster, and easier to understand.
 
 ---
 
-# ✨ Key Features
+## ✨ Key Features
 
-## 🧠 AI-Powered Legal Assistance
-Understand legal queries in natural language and generate contextual legal responses.
-
-## 📚 Retrieval-Augmented Generation (RAG)
-Uses vector databases and semantic retrieval to provide grounded legal answers instead of purely generative responses.
-
-## ⚖️ Indian Law Focused
-Built specifically for Indian legal systems and legal workflows.
-
-## 🔍 Intelligent Legal Search
-Search across legal documents, sections, and contextual references.
-
-## 🛡️ Hallucination Reduction
-Combines retrieval systems with LLMs to improve factual reliability.
-
-## 💬 Conversational Interface
-Simple chat-style interaction for users with no legal background.
-
-## 🚀 Scalable Architecture
-Designed for future expansion into multilingual and advanced legal research capabilities.
+* **🧠 AI-Powered Legal Assistance:** Understand legal queries in natural language and generate contextual legal responses.
+* **📚 Retrieval-Augmented Generation (RAG):** Uses vector databases and semantic retrieval to provide grounded legal answers instead of purely generative responses.
+* **⚖️ Indian Law Focused:** Built specifically for Indian legal systems and workflows.
+* **🔍 Intelligent Legal Search:** Search across legal documents, sections, and contextual references.
+* **🛡️ Hallucination Reduction:** Combines retrieval systems with LLMs to improve factual reliability.
+* **💬 Conversational Interface:** Simple chat-style interaction for users with no legal background.
+* **🚀 Scalable Architecture:** Designed for future expansion into multilingual and advanced legal research capabilities.
 
 ---
 
-# 🏗️ System Architecture
+## 🏗️ System Architecture
+
+```mermaid
+flowchart TD
+    A[User Query] --> B[Embedding Model]
+    B --> C[(Vector Database\nChromaDB)]
+    C --> D[Relevant Context Retrieval]
+    D --> E[LLM\nGroq / OpenAI]
+    E --> F([Legal Response])
+    
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style C fill:#bbf,stroke:#333,stroke-width:2px
+    style F fill:#bfb,stroke:#333,stroke-width:2px
+
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+| --- | --- |
+| **Python** | Core backend logic |
+| **Streamlit** | Frontend User Interface |
+| **LangChain** | LLM orchestration and chaining |
+| **ChromaDB** | Vector database for document embeddings |
+| **Groq API** | High-speed LLM inference |
+| **OpenAI API** | Advanced language model support |
+| **HuggingFace** | Open-source Embeddings / NLP |
+
+---
+
+## 📂 Project Structure
 
 ```text
-                ┌────────────────────┐
-                │    User Query      │
-                └─────────┬──────────┘
-                          │
-                          ▼
-                ┌────────────────────┐
-                │   Embedding Model  │
-                └─────────┬──────────┘
-                          │
-                          ▼
-                ┌────────────────────┐
-                │   Vector Database  │
-                │    (ChromaDB)      │
-                └─────────┬──────────┘
-                          │
-                          ▼
-                ┌────────────────────┐
-                │  Relevant Context  │
-                │     Retrieval      │
-                └─────────┬──────────┘
-                          │
-                          ▼
-                ┌────────────────────┐
-                │       LLM          │
-                │ (Groq/OpenAI/etc.) │
-                └─────────┬──────────┘
-                          │
-                          ▼
-                ┌────────────────────┐
-                │  Legal Response    │
-                └────────────────────┘
-````
-
----
-
-# 🛠️ Tech Stack
-
-| Technology   | Purpose                  |
-| ------------ | ------------------------ |
-| Python       | Core backend             |
-| Streamlit    | Frontend UI              |
-| LangChain    | LLM orchestration        |
-| ChromaDB     | Vector database          |
-| Groq API     | High-speed inference     |
-| OpenAI API   | Language model support   |
-| HuggingFace  | Embeddings / NLP         |
-| RAG Pipeline | Context-aware generation |
-
----
-
-# 📂 Project Structure
-
-```bash
 LegalNavi/
 │
-├── app.py                  # Main application
-├── requirements.txt        # Dependencies
-├── chroma_db/              # Vector database
-├── data/                   # Legal documents
-├── embeddings/             # Embedding logic
-├── utils/                  # Helper functions
-├── prompts/                # Prompt templates
+├── app.py                  # Main Streamlit application
+├── requirements.txt        # Python dependencies
+├── chroma_db/              # Local vector database storage
+├── data/                   # Raw legal documents and PDFs
+├── embeddings/             # Embedding generation logic
+├── utils/                  # Helper functions and configurations
+├── prompts/                # System prompt templates
 ├── assets/                 # Images and UI assets
-└── README.md
+└── README.md               # Project documentation
+
 ```
 
 ---
 
-# ⚡ Installation
+## ⚡ Installation & Setup
 
-## 1️⃣ Clone the Repository
+### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/raznam/legalnavi.git
+git clone [https://github.com/raznam/legalnavi.git](https://github.com/raznam/legalnavi.git)
 cd legalnavi
+
 ```
 
----
+### 2️⃣ Create a Virtual Environment
 
-## 2️⃣ Create Virtual Environment
-
-### Windows
+**For Windows:**
 
 ```bash
 python -m venv venv
 venv\Scripts\activate
+
 ```
 
-### Linux / Mac
+**For Linux / Mac:**
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
+
 ```
 
----
-
-## 3️⃣ Install Dependencies
+### 3️⃣ Install Dependencies
 
 ```bash
 pip install -r requirements.txt
+
 ```
 
----
+### 4️⃣ Configure Environment Variables
 
-## 4️⃣ Configure Environment Variables
-
-Create a `.env` file:
+Create a `.env` file in the root directory and add your API keys:
 
 ```env
-OPENAI_API_KEY=your_key
-GROQ_API_KEY=your_key
+OPENAI_API_KEY=your_openai_api_key_here
+GROQ_API_KEY=your_groq_api_key_here
+
 ```
 
----
-
-## 5️⃣ Run the Application
+### 5️⃣ Run the Application
 
 ```bash
 streamlit run app.py
+
 ```
 
 ---
 
-# 📸 Screenshots
+## 📸 Screenshots
 
-## 🏠 Home Interface
+### 🏠 Home Interface
 
-<p align="center">
-  <img src="assets/home.png" width="90%" />
-</p>
+### 💬 Legal Chat Assistant
 
----
-
-## 💬 Legal Chat Assistant
-
-<p align="center">
-  <img src="assets/chat.png" width="90%" />
-</p>
+### 📚 Retrieved Legal Context
 
 ---
 
-## 📚 Retrieved Legal Context
+## 🔍 Example Queries
 
-<p align="center">
-  <img src="assets/retrieval.png" width="90%" />
-</p>
+Try asking the assistant:
 
----
-
-# 🔍 Example Queries
-
-```text
-• What legal action can be taken for online fraud in India?
-• Explain IPC sections related to theft.
-• What are the rights of women under Indian law?
-• Legal steps after a road accident.
-• Cybercrime complaint process in India.
-```
+* *"What legal action can be taken for online fraud in India?"*
+* *"Explain IPC sections related to theft."*
+* *"What are the rights of women under Indian law?"*
+* *"What are the immediate legal steps I should take after a road accident?"*
+* *"Explain the cybercrime complaint process in India."*
 
 ---
 
-# 🎯 Future Enhancements
+## 🎯 Future Enhancements
 
-* 🌐 Multilingual legal support
-* 📄 FIR drafting assistance
-* 🧾 Legal document generation
-* 🎙️ Voice-enabled legal assistant
-* 📱 Mobile application support
-* 🏛️ Court judgment summarization
-* 🔗 Real-time legal database updates
-
----
-
-# 🤝 Contribution Guidelines
-
-Contributions are welcome!
-
-## Steps to Contribute
-
-1. Fork the repository
-2. Create a new branch
-
-```bash
-git checkout -b feature-name
-```
-
-3. Commit changes
-
-```bash
-git commit -m "Added new feature"
-```
-
-4. Push to branch
-
-```bash
-git push origin feature-name
-```
-
-5. Open a Pull Request
+* [ ] 🌐 **Multilingual legal support** (Hindi, Bengali, Tamil, etc.)
+* [ ] 📄 **FIR drafting assistance**
+* [ ] 🧾 **Automated legal document generation**
+* [ ] 🎙️ **Voice-enabled legal assistant**
+* [ ] 📱 **Dedicated Mobile application**
+* [ ] 🏛️ **Court judgment summarization**
 
 ---
 
-# 🛡️ Disclaimer
+## 🤝 Contribution Guidelines
 
-Legal Navi is an AI-assisted informational platform and should **not** be considered a substitute for professional legal advice from certified legal practitioners.
+Contributions are always welcome! Here is how you can help:
 
----
-
-# 👨‍💻 Authors
-
-### Team Legal Navi
-
-Built with the vision of democratizing legal accessibility through Artificial Intelligence.
+1. **Fork** the repository.
+2. **Create a new branch** (`git checkout -b feature/AmazingFeature`).
+3. **Commit your changes** (`git commit -m 'Add some AmazingFeature'`).
+4. **Push to the branch** (`git push origin feature/AmazingFeature`).
+5. **Open a Pull Request**.
 
 ---
 
-# 🌟 Support the Project
+## 🛡️ Disclaimer
 
-If you found this project useful:
-
-⭐ Star the repository
-🍴 Fork the project
-📢 Share with others
+**Legal Navi** is an AI-assisted informational platform. The responses generated by this system should **not** be considered a substitute for professional legal advice, counsel, or representation from certified legal practitioners. Always consult a qualified lawyer for official legal matters.
 
 ---
 
-<div align="center">
+## 👨‍💻 Authors
 
-## ⚖️ “Justice should be understandable and accessible to everyone.”
+**Team Legal Navi**
 
-Made with ❤️ using AI & RAG
+*Built with the vision of democratizing legal accessibility through Artificial Intelligence.*
 
-</div>
-```
+---
+
+## 🌟 Support the Project
+
+If you found this project useful, please consider supporting it!
+
+* ⭐ **Star** the repository
+* 🍴 **Fork** the project
+* 📢 **Share** it with others in the tech and legal communities
+
+---
